@@ -12,7 +12,21 @@
 class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
-        if(p==NULL || q==NULL)return (p==q);
-        return (p->val==q->val) && isSameTree(p->left,q->left) && isSameTree(p->right,q->right);
+
+        // Case 1: dono NULL hain
+        if (p == NULL && q == NULL)
+            return true;
+
+        // Case 2: koi ek NULL hai
+        if (p == NULL || q == NULL)
+            return false;
+
+        // Case 3: values match nahi karti
+        if (p->val != q->val)
+            return false;
+
+        // Case 4: left aur right subtree check karo
+        return isSameTree(p->left, q->left) &&
+               isSameTree(p->right, q->right);
     }
 };
